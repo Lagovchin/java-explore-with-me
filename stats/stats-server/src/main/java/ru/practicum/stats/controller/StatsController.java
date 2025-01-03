@@ -25,7 +25,6 @@ public class StatsController {
         return service.hit(object);
     }
 
-
     @GetMapping(value = "/ru/practicum/stats")
     @ResponseStatus(value = HttpStatus.OK)
     public List<HitObjectProjection> getStats(@ModelAttribute ParamObject params) {
