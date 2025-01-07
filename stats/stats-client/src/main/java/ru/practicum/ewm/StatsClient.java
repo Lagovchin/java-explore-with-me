@@ -3,6 +3,7 @@ package ru.practicum.ewm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import ru.practicum.statsdto.HitObject;
@@ -14,10 +15,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Service
 public class StatsClient {
 
     private static final String API_HIT_PREFIX = "/hit";
     private static final String API_GET_STATS_PREFIX = "/stats";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     private final RestTemplate rest;
     private final String statsServerUri;
@@ -45,7 +48,7 @@ public class StatsClient {
     public ResponseEntity<Object> getStats(LocalDateTime start, LocalDateTime end,
                                            List<String> uris, Boolean unique) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
         String formattedStart = start.format(formatter);
         String formattedEnd = end.format(formatter);
 

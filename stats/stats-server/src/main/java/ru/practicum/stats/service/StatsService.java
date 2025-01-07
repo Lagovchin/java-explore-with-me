@@ -7,7 +7,6 @@ import ru.practicum.statsdto.ParamObject;
 import java.util.List;
 
 public interface StatsService {
-
     HitObject hit(HitObject object);
 
     List<HitObjectProjection> viewStats(ParamObject params);
