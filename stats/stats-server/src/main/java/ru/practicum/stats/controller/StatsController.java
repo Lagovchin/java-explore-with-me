@@ -28,7 +28,6 @@ public class StatsController {
     @GetMapping(value = "/stats")
     @ResponseStatus(value = HttpStatus.OK)
     public List<HitObjectProjection> getStats(@ModelAttribute ParamObject params) {
-
         List<HitObjectProjection> list = service.viewStats(params);
         return service.viewStats(params);
     }
