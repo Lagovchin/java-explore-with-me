@@ -19,7 +19,6 @@ import ru.practicum.enw.service.event.EventService;
 public class EventAdminController {
 
     private final EventService eventService;
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -27,9 +26,9 @@ public class EventAdminController {
                                                        @RequestParam(required = false) List<Long> categories,
                                                        @RequestParam(required = false) List<String> states,
                                                        @RequestParam(required = false)
-                                                       @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime rangeStart,
+                                                       @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
                                                        @RequestParam(required = false)
-                                                       @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime rangeEnd,
+                                                       @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                                        @RequestParam(required = false, defaultValue = "0") int from,
                                                        @RequestParam(required = false, defaultValue = "10") int size) {
 

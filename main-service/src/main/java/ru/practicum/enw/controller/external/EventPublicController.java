@@ -20,7 +20,6 @@ import java.util.List;
 public class EventPublicController {
 
     private final EventService eventService;
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -28,9 +27,9 @@ public class EventPublicController {
                                          @RequestParam(required = false) List<Integer> categories,
                                          @RequestParam(required = false) Boolean paid,
                                          @RequestParam(required = false)
-                                         @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime rangeStart,
+                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
                                          @RequestParam(required = false)
-                                         @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime rangeEnd,
+                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                          @RequestParam(required = false) Boolean onlyAvailable,
                                          @RequestParam(required = false, defaultValue = "VIEWS") SortType sort,
                                          @RequestParam(required = false, defaultValue = "0") int from,
