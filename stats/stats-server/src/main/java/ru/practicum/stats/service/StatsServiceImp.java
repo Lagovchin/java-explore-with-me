@@ -21,7 +21,6 @@ import java.util.List;
 public class StatsServiceImp implements StatsService {
 
     private final StatsRepository repository;
-    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     @Override
     @Transactional
@@ -34,8 +33,8 @@ public class StatsServiceImp implements StatsService {
     @Override
     public List<HitObjectDto> viewStats(ParamObject params) throws BadRequestException {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        DateTimeFormatter formatterTwo = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        DateTimeFormatter formatterTwo = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
         if (params.getStart() == null || params.getEnd() == null) {
             throw new BadRequestException("Start and date required");

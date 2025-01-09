@@ -21,7 +21,6 @@ public class StatsClient {
 
     private static final String API_HIT_PREFIX = "/hit";
     private static final String API_GET_STATS_PREFIX = "/stats";
-    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     private final RestTemplate rest;
     private final String statsServerUri;
@@ -49,7 +48,7 @@ public class StatsClient {
     public ResponseEntity<Object> getStats(LocalDateTime start, LocalDateTime end,
                                            List<String> uris, Boolean unique) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
         ParamObject params = ParamObject.builder()
                 .start(start.format(formatter))
