@@ -6,6 +6,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 import ru.practicum.statsdto.HitObject;
 import ru.practicum.statsdto.ParamObject;
 
@@ -20,7 +21,7 @@ public class StatsClient {
 
     private static final String API_HIT_PREFIX = "/hit";
     private static final String API_GET_STATS_PREFIX = "/stats";
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     private final RestTemplate rest;
     private final String statsServerUri;
@@ -49,12 +50,10 @@ public class StatsClient {
                                            List<String> uris, Boolean unique) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        String formattedStart = start.format(formatter);
-        String formattedEnd = end.format(formatter);
 
         ParamObject params = ParamObject.builder()
-                .start(URLEncoder.encode(formattedStart, StandardCharsets.UTF_8))
-                .end(URLEncoder.encode(formattedEnd, StandardCharsets.UTF_8))
+                .start(start.format(formatter))
+                .end(end.format(formatter))
                 .build();
 
         if (uris != null) {
@@ -87,7 +86,6 @@ public class StatsClient {
         return getStats(start, end, null, null);
     }
 
-
     private <T> ResponseEntity<Object> prepareAndSendRequest(String path, HttpMethod method,
                                                              @Nullable T body, @Nullable ParamObject params) {
 
@@ -99,11 +97,19 @@ public class StatsClient {
             if (params == null) {
                 statsServerResponse = rest.exchange(path, method, requestEntity, Object.class);
             } else {
-                statsServerResponse = rest.exchange(path, method, requestEntity, Object.class, params);
+
+                String urlWithParams = UriComponentsBuilder.fromHttpUrl(path)
+                        .queryParam("start", URLEncoder.encode(params.getStart(), StandardCharsets.UTF_8))
+                        .queryParam("end", URLEncoder.encode(params.getEnd(), StandardCharsets.UTF_8))
+                        .queryParam("unique", params.getUnique())
+                        .queryParam("uris", params.getUris())
+                        .build(false)
+                        .toUriString();
+                statsServerResponse = rest.exchange(urlWithParams, method, requestEntity, Object.class);
             }
 
         } catch (HttpStatusCodeException e) {
-            return ResponseEntity.status(e.getStatusCode()).body(e.getResponseBodyAsByteArray());
+            return ResponseEntity.status(e.getStatusCode()).body(null);
         }
 
         return prepareGatewayResponse(statsServerResponse);
