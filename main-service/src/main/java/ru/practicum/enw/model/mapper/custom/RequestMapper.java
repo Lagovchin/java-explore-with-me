@@ -14,6 +14,7 @@ public class RequestMapper {
                 .event(request.getEvent())
                 .status(request.getStatus())
                 .build();
+
     }
 
     public static ParticipationRequestDto fromEntityToDto(ParticipationRequest request) {

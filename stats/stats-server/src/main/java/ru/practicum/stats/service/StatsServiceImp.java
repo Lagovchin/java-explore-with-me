@@ -34,7 +34,7 @@ public class StatsServiceImp implements StatsService {
     public List<HitObjectDto> viewStats(ParamObject params) throws BadRequestException {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        DateTimeFormatter formatterTwo = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        DateTimeFormatter formatterTwo = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         if (params.getStart() == null || params.getEnd() == null) {
             throw new BadRequestException("Start and date required");
