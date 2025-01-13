@@ -1,6 +1,5 @@
 package ru.practicum.enw.model.mapper.custom;
 
-import org.springframework.stereotype.Component;
 import ru.practicum.enw.model.entity.Category;
 import ru.practicum.enw.model.entity.Event;
 import ru.practicum.enw.model.event.EventFullDto;
@@ -11,7 +10,6 @@ import ru.practicum.enw.model.user.UserDto;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Component
 public class EventMapper {
 
     public static Event fromNewDtoToEntity(NewEventDto newEvent, Category category, UserDto user) {
@@ -21,8 +19,7 @@ public class EventMapper {
         event.setDescription(newEvent.getDescription());
         event.setAnnotation(newEvent.getAnnotation());
         event.setCategory(category);
-        LocalDateTime eventDate = LocalDateTime.parse(newEvent.getEventDate(),
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime eventDate = LocalDateTime.parse(newEvent.getEventDate());
         event.setEventDate(eventDate);
         event.setInitiator(UserMapper.fromDtoToEntity(user));
         event.setLocation(newEvent.getLocation());

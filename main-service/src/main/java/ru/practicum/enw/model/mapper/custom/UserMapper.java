@@ -1,12 +1,10 @@
 package ru.practicum.enw.model.mapper.custom;
 
-import org.springframework.stereotype.Component;
 import ru.practicum.enw.model.entity.User;
 import ru.practicum.enw.model.user.NewUserRequest;
 import ru.practicum.enw.model.user.UserDto;
 import ru.practicum.enw.model.user.UserShortDto;
 
-@Component
 public class UserMapper {
 
     public static UserDto fromNewDto(NewUserRequest user) {

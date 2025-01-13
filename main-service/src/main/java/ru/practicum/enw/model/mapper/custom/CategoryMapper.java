@@ -1,11 +1,9 @@
 package ru.practicum.enw.model.mapper.custom;
 
-import org.springframework.stereotype.Component;
 import ru.practicum.enw.model.category.CategoryDto;
 import ru.practicum.enw.model.category.NewCategoryDto;
 import ru.practicum.enw.model.entity.Category;
 
-@Component
 public class CategoryMapper {
 
     public static Category fromNewToEntity(NewCategoryDto newCategoryDto) {

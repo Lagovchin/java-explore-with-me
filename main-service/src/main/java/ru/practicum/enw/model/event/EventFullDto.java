@@ -51,9 +51,7 @@ public class EventFullDto {
     private Integer participantLimit = 0;
     private Boolean requestModeration = true;
     private Integer confirmedRequests;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdOn;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime publishedOn;
     private String state;
     private Integer views;
