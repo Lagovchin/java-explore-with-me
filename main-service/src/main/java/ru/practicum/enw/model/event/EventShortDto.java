@@ -1,8 +1,6 @@
 package ru.practicum.enw.model.event;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 import ru.practicum.enw.model.category.CategoryDto;
 import ru.practicum.enw.model.user.UserShortDto;
 
