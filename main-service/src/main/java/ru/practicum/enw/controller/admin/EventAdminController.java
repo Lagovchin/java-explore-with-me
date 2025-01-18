@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.enw.exceptions.NotFoundCustomException;
@@ -25,9 +26,9 @@ public class EventAdminController {
                                                        @RequestParam(required = false) List<Long> categories,
                                                        @RequestParam(required = false) List<String> states,
                                                        @RequestParam(required = false)
-                                                       LocalDateTime rangeStart,
+                                                       @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
                                                        @RequestParam(required = false)
-                                                       LocalDateTime rangeEnd,
+                                                       @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                                        @RequestParam(required = false, defaultValue = "0") int from,
                                                        @RequestParam(required = false, defaultValue = "10") int size) {
 

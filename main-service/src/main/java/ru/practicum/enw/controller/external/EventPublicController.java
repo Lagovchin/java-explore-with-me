@@ -2,6 +2,7 @@ package ru.practicum.enw.controller.external;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.enw.exceptions.NotFoundCustomException;
@@ -26,9 +27,9 @@ public class EventPublicController {
                                          @RequestParam(required = false) List<Integer> categories,
                                          @RequestParam(required = false) Boolean paid,
                                          @RequestParam(required = false)
-                                         LocalDateTime rangeStart,
+                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
                                          @RequestParam(required = false)
-                                         LocalDateTime rangeEnd,
+                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                          @RequestParam(required = false) Boolean onlyAvailable,
                                          @RequestParam(required = false, defaultValue = "VIEWS") SortType sort,
                                          @RequestParam(required = false, defaultValue = "0") int from,

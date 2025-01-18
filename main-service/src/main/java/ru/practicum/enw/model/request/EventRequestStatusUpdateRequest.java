@@ -13,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventRequestStatusUpdateRequest {
-    private List<Long> requestIds;
+    List<Long> requestIds;
     @Pattern(regexp = "CONFIRMED|REJECTED",
             message = "Error: State must be in: CONFIRMED|REJECTED")
-    private String status;
+    String status;
 }

@@ -1,5 +1,6 @@
 package ru.practicum.enw.model.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 public class ParticipationRequestDto {
 
     private long id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime created;
     @NotNull
     private long event;
