@@ -34,11 +34,11 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     @Transactional
     public void delete(long id) throws NotFoundCustomException {
-        if (repo.findById(id).isEmpty()) {
+        if (!repo.existsById(id)) {
             throw new NotFoundCustomException("Category with id=" + id + " not found");
         }
 
-        if (!eventRepo.findByCategoryId(id).isEmpty()) {
+        if (eventRepo.existsById(id)) {
             throw new ConflictCustomException("Category with id=" + id + " not available");
         }
 
@@ -48,7 +48,7 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     @Transactional
     public CategoryDto update(long id, NewCategoryDto newCategoryDto) throws NotFoundCustomException {
-        if (repo.findById(id).isEmpty()) {
+        if (!repo.existsById(id)) {
             throw new NotFoundCustomException("Category with id=" + id + " not found");
         }
 
