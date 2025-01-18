@@ -12,6 +12,7 @@ import ru.practicum.enw.exceptions.NotFoundCustomException;
 import ru.practicum.enw.model.event.EventFullDto;
 import ru.practicum.enw.model.event.UpdateEventAdminRequest;
 import ru.practicum.enw.service.event.EventService;
+import ru.practicum.enw.utils.Constants;
 
 @RestController
 @RequestMapping(value = "/admin/events")
@@ -26,9 +27,9 @@ public class EventAdminController {
                                                        @RequestParam(required = false) List<Long> categories,
                                                        @RequestParam(required = false) List<String> states,
                                                        @RequestParam(required = false)
-                                                       @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
+                                                       @DateTimeFormat(pattern = Constants.DATE_TIME_FORMAT) LocalDateTime rangeStart,
                                                        @RequestParam(required = false)
-                                                       @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
+                                                       @DateTimeFormat(pattern = Constants.DATE_TIME_FORMAT) LocalDateTime rangeEnd,
                                                        @RequestParam(required = false, defaultValue = "0") int from,
                                                        @RequestParam(required = false, defaultValue = "10") int size) {
 

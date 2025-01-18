@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.practicum.enw.model.entity.LocationEwm;
+import ru.practicum.enw.utils.Constants;
 
 import java.time.LocalDateTime;
 
@@ -30,7 +31,7 @@ public class UpdateEventUserRequest {
             "Value: ${validatedValue}")
     private String description;
     @Nullable
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = Constants.DATE_TIME_FORMAT)
     private LocalDateTime eventDate;
     @Nullable
     private LocationEwm location;

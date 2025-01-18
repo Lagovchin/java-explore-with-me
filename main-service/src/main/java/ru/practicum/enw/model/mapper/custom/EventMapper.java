@@ -6,6 +6,7 @@ import ru.practicum.enw.model.event.EventFullDto;
 import ru.practicum.enw.model.event.EventShortDto;
 import ru.practicum.enw.model.event.NewEventDto;
 import ru.practicum.enw.model.user.UserDto;
+import ru.practicum.enw.utils.Constants;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +21,7 @@ public class EventMapper {
         event.setAnnotation(newEvent.getAnnotation());
         event.setCategory(category);
         LocalDateTime eventDate = LocalDateTime.parse(newEvent.getEventDate(),
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                DateTimeFormatter.ofPattern(Constants.DATE_TIME_FORMAT));
         event.setEventDate(eventDate);
         event.setInitiator(UserMapper.fromDtoToEntity(user));
         event.setLocation(newEvent.getLocation());

@@ -10,6 +10,7 @@ import ru.practicum.enw.model.enums.SortType;
 import ru.practicum.enw.model.event.EventFullDto;
 import ru.practicum.enw.model.event.EventShortDto;
 import ru.practicum.enw.service.event.EventService;
+import ru.practicum.enw.utils.Constants;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,9 +28,9 @@ public class EventPublicController {
                                          @RequestParam(required = false) List<Integer> categories,
                                          @RequestParam(required = false) Boolean paid,
                                          @RequestParam(required = false)
-                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
+                                         @DateTimeFormat(pattern = Constants.DATE_TIME_FORMAT) LocalDateTime rangeStart,
                                          @RequestParam(required = false)
-                                         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
+                                         @DateTimeFormat(pattern = Constants.DATE_TIME_FORMAT) LocalDateTime rangeEnd,
                                          @RequestParam(required = false) Boolean onlyAvailable,
                                          @RequestParam(required = false, defaultValue = "VIEWS") SortType sort,
                                          @RequestParam(required = false, defaultValue = "0") int from,

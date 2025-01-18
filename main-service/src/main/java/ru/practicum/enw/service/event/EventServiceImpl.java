@@ -25,6 +25,7 @@ import ru.practicum.enw.model.mapper.custom.EventMapper;
 import ru.practicum.enw.repo.EventRepo;
 import ru.practicum.enw.service.location.LocationService;
 import ru.practicum.enw.service.user.UserService;
+import ru.practicum.enw.utils.Constants;
 import ru.practicum.ewm.StatsClient;
 import ru.practicum.statsdto.HitObjectDto;
 
@@ -79,7 +80,7 @@ public class EventServiceImpl implements EventService {
             }
         }
 
-        if (LocalDateTime.parse(event.getEventDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        if (LocalDateTime.parse(event.getEventDate(), DateTimeFormatter.ofPattern(Constants.DATE_TIME_FORMAT))
                 .isBefore(LocalDateTime.now())) {
             throw new BadRequestCustomException("Date can't be in the past");
         }

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
+import ru.practicum.enw.utils.Constants;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 public class ParticipationRequestDto {
 
     private long id;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = Constants.DATE_TIME_FORMAT)
     private LocalDateTime created;
     @NotNull
     private long event;
