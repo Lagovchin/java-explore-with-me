@@ -81,6 +81,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public void deleteCommentByAuthor(long idAuthor, long idEvent, long idComment) throws NotFoundCustomException {
 
         Comment comment = commentRepo.findById(idComment)
@@ -98,6 +99,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public void deleteCommentByAdmin(long idComment) throws NotFoundCustomException {
 
         if (!commentRepo.existsById(idComment)) {

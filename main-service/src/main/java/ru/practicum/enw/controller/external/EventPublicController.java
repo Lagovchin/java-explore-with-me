@@ -35,9 +35,9 @@ public class EventPublicController {
                                          @RequestParam(required = false)
                                          @DateTimeFormat(pattern = Constants.DATE_TIME_FORMAT) LocalDateTime rangeEnd,
                                          @RequestParam(required = false) Boolean onlyAvailable,
-                                         @RequestParam(required = false, defaultValue = "VIEWS") SortType sort,
-                                         @RequestParam(required = false, defaultValue = "0") int from,
-                                         @RequestParam(required = false, defaultValue = "10") int size,
+                                         @RequestParam(defaultValue = "VIEWS") SortType sort,
+                                         @RequestParam(defaultValue = "0") int from,
+                                         @RequestParam(defaultValue = "10") int size,
                                          HttpServletRequest request) {
 
         return eventService.getEventsForPublicWithParams(text, categories, paid, sort, rangeStart,
